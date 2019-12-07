@@ -1,5 +1,7 @@
 package com.rafaelm.clinica.odonto.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,14 +15,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Client {
+public class Client implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
+  private Integer id;
   private String name;
 
-  public void setName(String string) {
+  public Client() {
+  }
+
+  public Client(String name) {
+    super();
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String setName(String string) {
+    return name;
   }
 }
