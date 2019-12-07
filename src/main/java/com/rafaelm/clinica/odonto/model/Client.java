@@ -6,14 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Getter
 @Entity
 public class Client implements Serializable {
 
@@ -21,22 +24,22 @@ public class Client implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
   private String name;
 
   public Client() {
-  }
-
-  public Client(String name) {
-    super();
-    this.name = name;
   }
 
   public String getName() {
     return name;
   }
 
-  public String setName(String string) {
-    return name;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Client(String name) {
+    super();
+    this.setName(name);
   }
 }
