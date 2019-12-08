@@ -29,7 +29,7 @@ public class ClientController {
     return repository.findAll();
   }
 
-  @GetMapping(path = { "/{id}" })
+  @GetMapping(value = { "/{id}" })
   public ResponseEntity<Client> findById(@PathVariable long id) {
     return (repository.findById(id)).map(record -> ResponseEntity.ok().body(record))
         .orElse(ResponseEntity.notFound().build());
